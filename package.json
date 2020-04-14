@@ -1,0 +1,22 @@
+{
+  "name": "dazaar-payment-eos",
+  "version": "1.0.0",
+  "description": "eos payment provider for dazaar streaming services",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitfinexcom/dazaar-payment-eos.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bitfinexcom/dazaar-payment-eos/issues"
+  },
+  "homepage": "https://github.com/bitfinexcom/dazaar-payment-eos#readme",
+  "dependencies": {
+    "dazaar-eos-stream": "^1.0.2"
+  }
+}
