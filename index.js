@@ -1,5 +1,5 @@
 const eos = require('dazaar-eos-stream')
-const metadata = require('../metadata')
+const metadata = require('./metadata')
 
 const MAX_SUBSCRIBER_CACHE = 500
 

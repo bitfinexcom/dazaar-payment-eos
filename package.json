@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/bitfinexcom/dazaar-payment-eos#readme",
   "dependencies": {
-    "dazaar-eos-stream": "^1.0.2"
+    "dazaar-eos-stream": "github:bitfinexcom/dazaar-eos-stream"
   }
 }
