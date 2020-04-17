@@ -1,15 +1,16 @@
-const eos = require('dazaar-eos-stream')
+const eos = require('../dazaar/dazaar-eos-stream')
 const metadata = require('./metadata')
 
 const MAX_SUBSCRIBER_CACHE = 500
 
 module.exports = class DazaarEOSPayment {
-  constructor (seller, payment, opts = {}) {
-    this.seller = seller.key
+  constructor (dazaar, payment, opts = {}) {
+    this.dazaar = dazaar.key
     this.payment = payment
     this.eos = eos({ account: payment.payTo, ...opts })
     this.subscribers = new Map()
     this.destroyed = false
+    this.supports = this.constructor.supports
   }
 
   validate (buyer, cb) {
@@ -49,9 +50,9 @@ module.exports = class DazaarEOSPayment {
     }
   }
 
-  buy (buyer, amount, auth, cb) {
+  buy (seller, amount, auth, cb) {
     const e = eos(auth)
-    e.pay(this.payment.payTo, amount, this._filter(buyer), cb)
+    e.pay(this.payment.payTo, amount, this._filter(seller, false), cb)
   }
 
   destroy () {
@@ -63,8 +64,8 @@ module.exports = class DazaarEOSPayment {
     }
   }
 
-  _filter (buyer) {
-    return metadata(this.seller, buyer)
+  _filter (key, seller = true) {
+    return seller ? metadata(this.dazaar, key) : metadata(key, this.dazaar)
   }
 
   _get (buyer) {
