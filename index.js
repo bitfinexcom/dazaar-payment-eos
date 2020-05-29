@@ -100,3 +100,7 @@ module.exports = class DazaarEOSPayment {
     return payment.currency === 'EOS'
   }
 }
+
+function metadata (seller, buyer) {
+  return 'dazaar: ' + seller.toString('hex') + ' ' + buyer.toString('hex')
+}
