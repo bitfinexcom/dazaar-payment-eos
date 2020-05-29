@@ -1,5 +1,4 @@
-const eos = require('../dazaar/dazaar-eos-stream')
-const metadata = require('./metadata')
+const eos = require('dazaar-eos-stream')
 
 const MAX_SUBSCRIBER_CACHE = 500
 
@@ -99,4 +98,8 @@ module.exports = class DazaarEOSPayment {
   static supports (payment) {
     return payment.currency === 'EOS'
   }
+}
+
+function metadata (seller, buyer) {
+  return 'dazaar: ' + seller.toString('hex') + ' ' + buyer.toString('hex')
 }
