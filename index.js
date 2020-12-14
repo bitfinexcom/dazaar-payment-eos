@@ -96,7 +96,7 @@ module.exports = class DazaarEOSPayment {
   }
 
   static supports (payment) {
-    return payment.currency === 'EOS'
+    return payment.method === 'EOS'
   }
 }
 
